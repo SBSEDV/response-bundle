@@ -1,2 +1,7 @@
 unexpected_error: An unexpected error occured.
 
+request_has_errors: >-
+    {count, plural,
+        one   {Your request resulted in at least one error.}
+        other {Your request resulted in at least # errors.}
+    }

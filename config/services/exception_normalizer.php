@@ -14,4 +14,7 @@ return function (ContainerConfigurator $container): void {
             ])
             ->tag('serializer.normalizer')
 
+        ->set(HttpExceptionNormalizer::class)
+            ->tag('serializer.normalizer')
+    ;
 };

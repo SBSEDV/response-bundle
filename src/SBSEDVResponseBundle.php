@@ -24,6 +24,9 @@ class SBSEDVResponseBundle extends AbstractBundle
      */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
+        if ($config['exception_normalizer'] === true) {
+            $container->import('../config/services/exception_normalizer.php');
+        }
 
         $container->import('../config/services/api_response.php');
         $container->import('../config/services/event_listeners.php');
