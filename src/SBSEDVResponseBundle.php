@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle;
 
+use SBSEDV\Bundle\FormBundle\SBSEDVFormBundle;
 use SBSEDV\Bundle\ResponseBundle\DependencyInjection\Compiler\ExceptionListenerCompilerPass;
 use SBSEDV\Bundle\ResponseBundle\EventListener\DefaultRequestFormatEventListener;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
@@ -25,6 +26,13 @@ class SBSEDVResponseBundle extends AbstractBundle
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         if ($config['exception_normalizer'] === true) {
+            /** @var array<string, string> $bundles */
+            $bundles = $builder->getParameter('kernel.bundles');
+
+            if (\in_array(SBSEDVFormBundle::class, $bundles, true)) {
+                $container->import('../config/services/form_bundle.php');
+            }
+
             $container->import('../config/services/exception_normalizer.php');
         }
 
@@ -40,6 +48,7 @@ class SBSEDVResponseBundle extends AbstractBundle
             $container->services()->remove(DefaultRequestFormatEventListener::class);
         }
     }
+
     /**
      * {@inheritdoc}
      */
