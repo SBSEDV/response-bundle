@@ -6,6 +6,7 @@ use SBSEDV\Bundle\ResponseBundle\Exception\HttpException;
 use SBSEDV\Bundle\ResponseBundle\Response\ApiResponseDto;
 use SBSEDV\Bundle\ResponseBundle\Response\ApiResponseErrorDto;
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
+use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -27,6 +28,14 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
      */
     public function normalize(mixed $object, string $format = null, array $context = []): array
     {
+        /** @var bool $debug */
+        $debug = $context['debug'];
+
+        if ($debug) {
+            // so that in debug mode the HTML exception page is rendered
+            throw new NotEncodableValueException();
+        }
+
         // some exceptions may contain sensitive data in their message
         // example: PDO connection error leaks database password
         // Thats why we generate a generic one. Don't worry:
@@ -45,6 +54,6 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
      */
     public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
-        return $data instanceof FlattenException && !($context['debug'] ?? false) && (!($context['exception'] ?? null) instanceof HttpException);
+        return $data instanceof FlattenException && (!($context['exception'] ?? null) instanceof HttpException);
     }
 }
