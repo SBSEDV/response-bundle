@@ -36,7 +36,7 @@ class ApiResponseErrorNormalizer implements NormalizerInterface, CacheableSuppor
         ];
 
         if (null !== $object->cause) {
-            $error['cause'] = $object->cause;
+            $error['cause'] = $this->convertName($object->cause);
         }
 
         foreach ($object->other as $key => $value) {
