@@ -31,7 +31,7 @@ class HttpException extends \Exception implements HttpExceptionInterface
         protected array $other = [],
         protected bool $isLoggable = false
     ) {
-        $this->type = $type ?? 'general_error';
+        $this->type = $type ?? 'server_error';
 
         if ($message instanceof TranslatableMessage) {
             $this->translatable = $message;
