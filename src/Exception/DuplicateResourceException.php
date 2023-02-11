@@ -2,7 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
-use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 class DuplicateResourceException extends HttpException
 {
@@ -12,7 +12,7 @@ class DuplicateResourceException extends HttpException
      * @param mixed $resourceIdentifier The duplicate resource identifier.
      */
     public function __construct(
-        TranslatableMessage|string $message,
+        TranslatableInterface|string $message,
         mixed $resourceIdentifier = null,
         ?\Throwable $previous = null,
         ?string $cause = null,

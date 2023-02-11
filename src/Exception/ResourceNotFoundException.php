@@ -2,7 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
-use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 class ResourceNotFoundException extends HttpException
 {
@@ -12,7 +12,7 @@ class ResourceNotFoundException extends HttpException
      * @param mixed $resourceIdentifier The resource identifier that was not found.
      */
     public function __construct(
-        TranslatableMessage|string $message,
+        TranslatableInterface|string $message,
         mixed $resourceIdentifier = null,
         ?\Throwable $previous = null,
         ?string $cause = null,

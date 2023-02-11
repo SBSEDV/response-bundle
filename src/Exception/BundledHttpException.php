@@ -2,7 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
-use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 class BundledHttpException extends HttpException
 {
@@ -13,7 +13,7 @@ class BundledHttpException extends HttpException
      */
     public function __construct(
         private array $exceptions,
-        TranslatableMessage|string $message = '',
+        TranslatableInterface|string $message = '',
         int $code = 400,
         ?\Throwable $previous = null,
         array $headers = [],

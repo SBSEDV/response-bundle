@@ -2,7 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
-use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 class InvalidActionException extends HttpException
 {
@@ -10,7 +10,7 @@ class InvalidActionException extends HttpException
      * {@inheritdoc}
      */
     public function __construct(
-        TranslatableMessage|string $message,
+        TranslatableInterface|string $message,
         int $code = 400,
         ?\Throwable $previous = null,
         ?string $cause = null,

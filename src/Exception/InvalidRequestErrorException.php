@@ -2,7 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
-use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 class InvalidRequestErrorException extends HttpException
 {
@@ -12,7 +12,7 @@ class InvalidRequestErrorException extends HttpException
      * @param string $param The input parameter that is invalid.
      */
     public function __construct(
-        TranslatableMessage|string $message,
+        TranslatableInterface|string $message,
         string $param,
         ?\Throwable $previous = null,
         ?string $cause = null,

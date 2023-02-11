@@ -2,7 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
-use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 class AccessDeniedException extends HttpException
 {
@@ -10,7 +10,7 @@ class AccessDeniedException extends HttpException
      * {@inheritdoc}
      */
     public function __construct(
-        TranslatableMessage|string $message = 'Access denied.',
+        TranslatableInterface|string $message = 'Access denied.',
         ?\Throwable $previous = null,
         ?string $cause = null,
         array $headers = [],
