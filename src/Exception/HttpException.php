@@ -13,16 +13,16 @@ class HttpException extends \Exception implements HttpExceptionInterface
     protected ?TranslatableInterface $translatable = null;
 
     /**
-     * @param TranslatableMessage|string $message    The Exception message to throw.
-     * @param int                        $code       [optional] The Exception code.
-     * @param \Throwable|null            $previous   [optional] The previous throwable used for the exception chaining.
-     * @param string|null                $cause      [optional] The error cause.
-     * @param array                      $headers    [optional] Additional http response headers.
-     * @param array                      $other      [optional] Additional error parameters.
-     * @param bool                       $isLoggable [optional] Whether the exception should be logged.
+     * @param TranslatableInterface|string $message    The Exception message to throw.
+     * @param int                          $code       [optional] The Exception code.
+     * @param \Throwable|null              $previous   [optional] The previous throwable used for the exception chaining.
+     * @param string|null                  $cause      [optional] The error cause.
+     * @param array                        $headers    [optional] Additional http response headers.
+     * @param array                        $other      [optional] Additional error parameters.
+     * @param bool                         $isLoggable [optional] Whether the exception should be logged.
      */
     public function __construct(
-        TranslatableMessage|string $message,
+        TranslatableInterface|string $message,
         int $code = 500,
         ?\Throwable $previous = null,
         ?string $type = null,
@@ -33,13 +33,19 @@ class HttpException extends \Exception implements HttpExceptionInterface
     ) {
         $this->type = $type ?? 'server_error';
 
-        if ($message instanceof TranslatableMessage) {
+        if ($message instanceof TranslatableInterface) {
             $this->translatable = $message;
 
-            $message = $message->getDomain() === null ? $message->getMessage() : $message->getDomain().'.'.$message->getMessage();
+            if ($message instanceof TranslatableMessage) {
+                $message = $message->getDomain() === null ? $message->getMessage() : $message->getDomain().'.'.$message->getMessage();
 
-            if (null === $this->cause) {
-                $this->cause = $message;
+                if (null === $this->cause) {
+                    $this->cause = $message;
+                }
+            } elseif ($message instanceof \Stringable) {
+                $message = (string) $message;
+            } else {
+                $message = '';
             }
         }
 
