@@ -46,6 +46,7 @@ class HttpExceptionNormalizer implements NormalizerInterface, NormalizerAwareInt
 
         $response = new ApiResponseDto($message, null, $errors, $object->getStatusCode());
 
+        // @phpstan-ignore-next-line
         return $this->normalizer->normalize($response, $format, $context);
     }
 

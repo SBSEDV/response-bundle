@@ -43,9 +43,11 @@ class InvalidFormExceptionEventListener implements EventSubscriberInterface
 
         $errors = [];
 
+        /** @var array $formError */
         foreach ($formErrors as $formError) {
             $dto = new ApiResponseErrorDto($formError['message'], 'invalid_request_error', $formError['cause'] ?? null);
 
+            /** @var string $key */
             foreach ($formError as $key => $value) {
                 if (\in_array($key, ['message', 'type', 'cause'], true)) {
                     continue;

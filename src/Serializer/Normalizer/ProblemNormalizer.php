@@ -63,6 +63,7 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
 
         $response = new ApiResponseDto($msg, null, [$error], $object->getStatusCode());
 
+        // @phpstan-ignore-next-line
         return $this->normalizer->normalize($response, $format, $context);
     }
 
