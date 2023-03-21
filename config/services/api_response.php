@@ -5,7 +5,10 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use SBSEDV\Bundle\ResponseBundle\Response\ApiResponseFactory;
 use SBSEDV\Bundle\ResponseBundle\Serializer\Normalizer\ApiResponseErrorNormalizer;
 use SBSEDV\Bundle\ResponseBundle\Serializer\Normalizer\ApiResponseNormalizer;
+use SBSEDV\Bundle\ResponseBundle\Serializer\Normalizer\LinkCollectionNormalizer;
+use SBSEDV\Bundle\ResponseBundle\Serializer\Normalizer\LinkNormalizer;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -32,5 +35,14 @@ return function (ContainerConfigurator $container): void {
                 '$normalizer' => service(NormalizerInterface::class),
                 '$requestStack' => service(RequestStack::class),
             ])
+
+        ->set(LinkNormalizer::class)
+            ->args([
+                '$urlGenerator' => service(UrlGeneratorInterface::class),
+            ])
+            ->tag('serializer.normalizer')
+
+        ->set(LinkCollectionNormalizer::class)
+            ->tag('serializer.normalizer')
     ;
 };
