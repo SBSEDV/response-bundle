@@ -23,7 +23,7 @@ class LinkNormalizer implements NormalizerInterface, CacheableSupportsMethodInte
     {
         $href = $object->href;
 
-        if (!\str_starts_with('http', $href)) {
+        if (!\str_starts_with($href, 'http')) {
             $href = $this->urlGenerator->generate($href, $object->routeParams, UrlGeneratorInterface::ABSOLUTE_URL);
         }
 
