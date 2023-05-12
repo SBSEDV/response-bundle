@@ -8,8 +8,8 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 class DefaultRequestFormatEventListener implements EventSubscriberInterface
 {
     public function __construct(
-        private bool $isDebug,
-        private string $defaultFormat
+        private readonly bool $isDebug,
+        private readonly string $defaultFormat
     ) {
     }
 

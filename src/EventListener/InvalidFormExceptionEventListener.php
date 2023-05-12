@@ -15,8 +15,8 @@ use Symfony\Component\Translation\TranslatableMessage;
 class InvalidFormExceptionEventListener implements EventSubscriberInterface
 {
     public function __construct(
-        private NormalizerInterface $normalizer,
-        private ApiResponseFactory $apiResponseFactory
+        private readonly NormalizerInterface $normalizer,
+        private readonly ApiResponseFactory $apiResponseFactory
     ) {
     }
 

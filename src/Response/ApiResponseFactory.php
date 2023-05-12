@@ -12,9 +12,9 @@ use Symfony\Component\Serializer\SerializerInterface;
 class ApiResponseFactory
 {
     public function __construct(
-        private SerializerInterface $serializer,
-        private NormalizerInterface $normalizer,
-        private RequestStack $requestStack
+        private readonly SerializerInterface $serializer,
+        private readonly NormalizerInterface $normalizer,
+        private readonly RequestStack $requestStack
     ) {
     }
 

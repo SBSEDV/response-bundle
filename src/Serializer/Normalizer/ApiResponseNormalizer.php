@@ -16,7 +16,7 @@ class ApiResponseNormalizer implements NormalizerInterface, CacheableSupportsMet
     use NormalizerAwareTrait;
 
     public function __construct(
-        private TranslatorInterface $translator
+        private readonly TranslatorInterface $translator
     ) {
     }
 

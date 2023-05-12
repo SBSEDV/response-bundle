@@ -12,8 +12,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ApiResponseErrorNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
 {
     public function __construct(
-        private TranslatorInterface $translator,
-        private ?NameConverterInterface $nameConverter
+        private readonly TranslatorInterface $translator,
+        private readonly ?NameConverterInterface $nameConverter
     ) {
     }
 
