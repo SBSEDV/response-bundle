@@ -32,7 +32,7 @@ class HttpException extends \Exception implements HttpExceptionInterface
         protected array $headers = [],
         protected array $other = [],
         protected bool $isLoggable = false,
-        protected string $logLevel = LogLevel::INFO
+        protected string $logLevel = LogLevel::ERROR
     ) {
         $this->type = $type ?? 'server_error';
 
