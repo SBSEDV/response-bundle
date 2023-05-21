@@ -13,21 +13,16 @@ class ErrorListener extends SymfonyErrorListener
      */
     protected function logException(\Throwable $exception, string $message, ?string $logLevel = null): void
     {
-        // skip exceptions that should not be logged.
+        if ($exception instanceof BundledHttpException) {
+            foreach ($exception->getExceptions() as $e) {
+                parent::logException($e, $message, $logLevel ?? $e->getLogLevel());
+            }
+
+            return;
+        }
+
         if ($exception instanceof HttpException) {
-            if ($exception instanceof BundledHttpException) {
-                foreach ($exception->getExceptions() as $e) {
-                    if ($e->isLoggable()) {
-                        parent::logException($e, $message, $logLevel);
-                    }
-                }
-
-                return;
-            }
-
-            if (!$exception->isLoggable()) {
-                return;
-            }
+            $logLevel ??= $exception->getLogLevel();
         }
 
         parent::logException($exception, $message, $logLevel);
