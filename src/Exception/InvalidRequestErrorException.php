@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
+use Psr\Log\LogLevel;
 use Symfony\Contracts\Translation\TranslatableInterface;
 
 class InvalidRequestErrorException extends HttpException
@@ -18,11 +19,12 @@ class InvalidRequestErrorException extends HttpException
         ?string $cause = null,
         array $headers = [],
         array $other = [],
-        bool $isLoggable = false
+        bool $isLoggable = false,
+        string $logLevel = LogLevel::INFO
     ) {
         $other['param'] = $param;
 
-        parent::__construct($message, 400, $previous, 'invalid_request_error', $cause, $headers, $other, $isLoggable);
+        parent::__construct($message, 400, $previous, 'invalid_request_error', $cause, $headers, $other, $isLoggable, $logLevel);
     }
 
     /**
@@ -33,6 +35,6 @@ class InvalidRequestErrorException extends HttpException
      */
     public static function fromResourceNotFoundException(ResourceNotFoundException $previous, string $param): self
     {
-        return new self($previous->getTranslatable() ?? $previous->getMessage(), $param, $previous);
+        return new self($previous->getTranslatable() ?? $previous->getMessage(), $param, $previous, null, $previous->getHeaders(), $previous->getOther(), $previous->isLoggable(), $previous->getLogLevel());
     }
 }

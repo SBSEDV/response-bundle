@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
+use Psr\Log\LogLevel;
 use Symfony\Contracts\Translation\TranslatableInterface;
 
 class ResourceNotFoundException extends HttpException
@@ -18,7 +19,8 @@ class ResourceNotFoundException extends HttpException
         ?string $cause = null,
         array $headers = [],
         array $other = [],
-        bool $isLoggable = false
+        bool $isLoggable = false,
+        string $logLevel = LogLevel::INFO
     ) {
         if (null !== $resourceIdentifier && !\is_scalar($resourceIdentifier)) {
             throw new \InvalidArgumentException('The $resourceIdentifier must have a scalar value.');
@@ -28,6 +30,6 @@ class ResourceNotFoundException extends HttpException
             $other['resourceIdentifier'] = $resourceIdentifier;
         }
 
-        parent::__construct($message, 404, $previous, 'resource_not_found', $cause, $headers, $other, $isLoggable);
+        parent::__construct($message, 404, $previous, 'resource_not_found', $cause, $headers, $other, $isLoggable, $logLevel);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
+use Psr\Log\LogLevel;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Contracts\Translation\TranslatableInterface;
@@ -20,6 +21,7 @@ class HttpException extends \Exception implements HttpExceptionInterface
      * @param array                        $headers    [optional] Additional http response headers.
      * @param array                        $other      [optional] Additional error parameters.
      * @param bool                         $isLoggable [optional] Whether the exception should be logged.
+     * @param string                       $logLevel   [optional] The desired log level.
      */
     public function __construct(
         TranslatableInterface|string $message,
@@ -29,7 +31,8 @@ class HttpException extends \Exception implements HttpExceptionInterface
         protected ?string $cause = null,
         protected array $headers = [],
         protected array $other = [],
-        protected bool $isLoggable = false
+        protected bool $isLoggable = false,
+        protected string $logLevel = LogLevel::INFO
     ) {
         $this->type = $type ?? 'server_error';
 
@@ -106,5 +109,10 @@ class HttpException extends \Exception implements HttpExceptionInterface
     public function isLoggable(): bool
     {
         return $this->isLoggable;
+    }
+
+    public function getLogLevel(): string
+    {
+        return $this->logLevel;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
+use Psr\Log\LogLevel;
 use Symfony\Contracts\Translation\TranslatableInterface;
 
 class DuplicateResourceException extends HttpException
@@ -18,7 +19,8 @@ class DuplicateResourceException extends HttpException
         ?string $cause = null,
         array $headers = [],
         array $other = [],
-        bool $isLoggable = false
+        bool $isLoggable = false,
+        string $logLevel = LogLevel::INFO
     ) {
         if (null !== $resourceIdentifier && !\is_scalar($resourceIdentifier)) {
             throw new \InvalidArgumentException('The $resourceIdentifier must have a scalar value.');
@@ -28,6 +30,6 @@ class DuplicateResourceException extends HttpException
             $other['existingResourceIdentifier'] = $resourceIdentifier;
         }
 
-        parent::__construct($message, 409, $previous, 'duplicate_resource', $cause, $headers, $other, $isLoggable);
+        parent::__construct($message, 409, $previous, 'duplicate_resource', $cause, $headers, $other, $isLoggable, $logLevel);
     }
 }

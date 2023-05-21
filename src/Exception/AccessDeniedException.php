@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\ResponseBundle\Exception;
 
+use Psr\Log\LogLevel;
 use Symfony\Contracts\Translation\TranslatableInterface;
 
 class AccessDeniedException extends HttpException
@@ -15,8 +16,9 @@ class AccessDeniedException extends HttpException
         ?string $cause = null,
         array $headers = [],
         array $other = [],
-        bool $isLoggable = false
+        bool $isLoggable = false,
+        string $logLevel = LogLevel::NOTICE
     ) {
-        parent::__construct($message, 403, $previous, 'access_denied', $cause, $headers, $other, $isLoggable);
+        parent::__construct($message, 403, $previous, 'access_denied', $cause, $headers, $other, $isLoggable, $logLevel);
     }
 }

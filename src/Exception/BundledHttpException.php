@@ -27,15 +27,7 @@ class BundledHttpException extends HttpException
             $this->exceptions = \array_slice($this->exceptions, 0, 150);
         }
 
-        $isLoggable = false;
-        foreach ($this->exceptions as $e) {
-            if ($e->isLoggable()) {
-                $isLoggable = true;
-                break;
-            }
-        }
-
-        parent::__construct($message, $code, $previous, 'bundled', null, $headers, $other, $isLoggable);
+        parent::__construct($message, $code, $previous, 'bundled', null, $headers, $other);
     }
 
     /**
