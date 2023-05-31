@@ -35,9 +35,6 @@ class LinkCollection implements \IteratorAggregate
         return \array_key_exists($name, $this->collection);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->collection);

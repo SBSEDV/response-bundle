@@ -26,8 +26,8 @@ class HttpException extends \Exception implements HttpExceptionInterface
     public function __construct(
         TranslatableInterface|string $message,
         int $code = 500,
-        ?\Throwable $previous = null,
-        ?string $type = null,
+        \Throwable $previous = null,
+        string $type = null,
         protected ?string $cause = null,
         protected array $headers = [],
         protected array $other = [],
@@ -87,17 +87,11 @@ class HttpException extends \Exception implements HttpExceptionInterface
         return $this->other;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getStatusCode(): int
     {
         return $this->code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getHeaders(): array
     {
         return $this->headers;

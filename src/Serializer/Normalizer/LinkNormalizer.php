@@ -15,11 +15,9 @@ class LinkNormalizer implements NormalizerInterface, CacheableSupportsMethodInte
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param Link $object
      */
-    public function normalize(mixed $object, ?string $format = null, array $context = []): array
+    public function normalize(mixed $object, string $format = null, array $context = []): array
     {
         $href = $object->href;
 
@@ -30,17 +28,11 @@ class LinkNormalizer implements NormalizerInterface, CacheableSupportsMethodInte
         return [...$object->other, 'href' => $href];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof Link;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

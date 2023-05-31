@@ -21,8 +21,6 @@ class ApiResponseNormalizer implements NormalizerInterface, CacheableSupportsMet
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param ApiResponseDto $object
      */
     public function normalize(mixed $object, string $format = null, array $context = []): array
@@ -41,17 +39,11 @@ class ApiResponseNormalizer implements NormalizerInterface, CacheableSupportsMet
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof ApiResponseDto;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

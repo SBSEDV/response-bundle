@@ -24,8 +24,6 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param FlattenException $object
      */
     public function normalize(mixed $object, string $format = null, array $context = []): array
@@ -67,9 +65,6 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
         return $this->normalizer->normalize($response, $format, $context);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof FlattenException && (!($context['exception'] ?? null) instanceof HttpException);

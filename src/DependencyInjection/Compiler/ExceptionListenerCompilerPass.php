@@ -8,9 +8,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class ExceptionListenerCompilerPass implements CompilerPassInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container): void
     {
         if ($container->hasDefinition('exception_listener')) {

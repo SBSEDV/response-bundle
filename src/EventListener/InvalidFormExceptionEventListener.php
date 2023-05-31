@@ -69,9 +69,6 @@ class InvalidFormExceptionEventListener implements EventSubscriberInterface
         $event->setResponse($this->apiResponseFactory->createApiResponse($apiResponse));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents(): array
     {
         return [

@@ -13,11 +13,9 @@ class LinkCollectionNormalizer implements NormalizerInterface, CacheableSupports
     use NormalizerAwareTrait;
 
     /**
-     * {@inheritdoc}
-     *
      * @param LinkCollection $object
      */
-    public function normalize(mixed $object, ?string $format = null, array $context = []): array
+    public function normalize(mixed $object, string $format = null, array $context = []): array
     {
         $data = [];
 
@@ -28,17 +26,11 @@ class LinkCollectionNormalizer implements NormalizerInterface, CacheableSupports
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof LinkCollection;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

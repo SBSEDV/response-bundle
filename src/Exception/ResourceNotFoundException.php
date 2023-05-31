@@ -8,15 +8,13 @@ use Symfony\Contracts\Translation\TranslatableInterface;
 class ResourceNotFoundException extends HttpException
 {
     /**
-     * {@inheritdoc}
-     *
      * @param mixed $resourceIdentifier The resource identifier that was not found.
      */
     public function __construct(
         TranslatableInterface|string $message,
         mixed $resourceIdentifier = null,
-        ?\Throwable $previous = null,
-        ?string $cause = null,
+        \Throwable $previous = null,
+        string $cause = null,
         array $headers = [],
         array $other = [],
         bool $isLoggable = false,

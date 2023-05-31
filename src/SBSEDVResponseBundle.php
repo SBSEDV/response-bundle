@@ -12,17 +12,11 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class SBSEDVResponseBundle extends AbstractBundle
 {
-    /**
-     * {@inheritdoc}
-     */
     public function configure(DefinitionConfigurator $definition): void
     {
         $definition->import('../config/definitions/*.php');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         if ($config['exception_normalizer'] === true) {
@@ -49,9 +43,6 @@ class SBSEDVResponseBundle extends AbstractBundle
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function build(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new ExceptionListenerCompilerPass());

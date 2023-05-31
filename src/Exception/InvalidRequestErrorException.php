@@ -8,15 +8,13 @@ use Symfony\Contracts\Translation\TranslatableInterface;
 class InvalidRequestErrorException extends HttpException
 {
     /**
-     * {@inheritdoc}
-     *
      * @param string $param The input parameter that is invalid.
      */
     public function __construct(
         TranslatableInterface|string $message,
         string $param,
-        ?\Throwable $previous = null,
-        ?string $cause = null,
+        \Throwable $previous = null,
+        string $cause = null,
         array $headers = [],
         array $other = [],
         bool $isLoggable = false,

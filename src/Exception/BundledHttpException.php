@@ -7,15 +7,13 @@ use Symfony\Contracts\Translation\TranslatableInterface;
 class BundledHttpException extends HttpException
 {
     /**
-     * {@inheritdoc}
-     *
      * @param HttpException[] $exceptions The exceptions to bundle.
      */
     public function __construct(
         private array $exceptions,
         TranslatableInterface|string $message = '',
         int $code = 400,
-        ?\Throwable $previous = null,
+        \Throwable $previous = null,
         array $headers = [],
         array $other = []
     ) {
