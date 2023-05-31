@@ -44,6 +44,13 @@ class ApiResponseNormalizer implements NormalizerInterface, CacheableSupportsMet
         return $data instanceof ApiResponseDto;
     }
 
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            ApiResponseDto::class => __CLASS__ === static::class,
+        ];
+    }
+
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

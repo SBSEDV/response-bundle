@@ -37,4 +37,11 @@ class LinkNormalizer implements NormalizerInterface, CacheableSupportsMethodInte
     {
         return true;
     }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            Link::class => __CLASS__ === static::class,
+        ];
+    }
 }

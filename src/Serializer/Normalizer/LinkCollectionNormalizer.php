@@ -35,4 +35,11 @@ class LinkCollectionNormalizer implements NormalizerInterface, CacheableSupports
     {
         return true;
     }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            LinkCollection::class => __CLASS__ === static::class,
+        ];
+    }
 }

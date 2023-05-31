@@ -54,6 +54,13 @@ class ApiResponseErrorNormalizer implements NormalizerInterface, CacheableSuppor
         return true;
     }
 
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            ApiResponseErrorDto::class => __CLASS__ === static::class,
+        ];
+    }
+
     private function convertName(string $name): string
     {
         if (null === $this->nameConverter) {

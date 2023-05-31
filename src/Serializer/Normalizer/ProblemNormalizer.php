@@ -69,4 +69,11 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
     {
         return $data instanceof FlattenException && (!($context['exception'] ?? null) instanceof HttpException);
     }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            FlattenException::class => __CLASS__ === static::class,
+        ];
+    }
 }

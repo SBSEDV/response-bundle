@@ -53,6 +53,13 @@ class HttpExceptionNormalizer implements NormalizerInterface, NormalizerAwareInt
         return $data instanceof FlattenException && isset($context['exception']) && $context['exception'] instanceof HttpException;
     }
 
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            FlattenException::class => __CLASS__ === static::class,
+        ];
+    }
+
     /**
      * Create an ApiResponseErrorDto from an HttpException.
      *
