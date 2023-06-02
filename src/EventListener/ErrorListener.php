@@ -12,14 +12,14 @@ class ErrorListener extends SymfonyErrorListener
     {
         if ($exception instanceof BundledHttpException) {
             foreach ($exception->getExceptions() as $e) {
-                parent::logException($e, $message, $logLevel ?? $e->getLogLevel());
+                parent::logException($e, $message, $e->getLogLevel());
             }
 
             return;
         }
 
         if ($exception instanceof HttpException) {
-            $logLevel ??= $exception->getLogLevel();
+            $logLevel = $exception->getLogLevel();
         }
 
         parent::logException($exception, $message, $logLevel);
