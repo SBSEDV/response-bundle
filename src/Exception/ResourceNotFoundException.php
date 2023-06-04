@@ -20,6 +20,10 @@ class ResourceNotFoundException extends HttpException
         bool $isLoggable = false,
         string $logLevel = LogLevel::INFO
     ) {
+        if ($resourceIdentifier instanceof \Stringable) {
+            $resourceIdentifier = (string) $resourceIdentifier;
+        }
+
         if (null !== $resourceIdentifier && !\is_scalar($resourceIdentifier)) {
             throw new \InvalidArgumentException('The $resourceIdentifier must have a scalar value.');
         }
