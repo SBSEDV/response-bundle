@@ -3,12 +3,11 @@
 namespace SBSEDV\Bundle\ResponseBundle\Serializer\Normalizer;
 
 use SBSEDV\Bundle\ResponseBundle\Model\LinkCollection;
-use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class LinkCollectionNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface, NormalizerAwareInterface
+class LinkCollectionNormalizer implements NormalizerInterface, NormalizerAwareInterface
 {
     use NormalizerAwareTrait;
 
@@ -29,11 +28,6 @@ class LinkCollectionNormalizer implements NormalizerInterface, CacheableSupports
     public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof LinkCollection;
-    }
-
-    public function hasCacheableSupportsMethod(): bool
-    {
-        return true;
     }
 
     public function getSupportedTypes(?string $format): array

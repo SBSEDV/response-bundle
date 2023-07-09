@@ -4,12 +4,11 @@ namespace SBSEDV\Bundle\ResponseBundle\Serializer\Normalizer;
 
 use SBSEDV\Bundle\ResponseBundle\Response\ApiResponseErrorDto;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
-use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Contracts\Translation\TranslatableInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class ApiResponseErrorNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
+class ApiResponseErrorNormalizer implements NormalizerInterface
 {
     public function __construct(
         private readonly TranslatorInterface $translator,
@@ -47,11 +46,6 @@ class ApiResponseErrorNormalizer implements NormalizerInterface, CacheableSuppor
     public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof ApiResponseErrorDto;
-    }
-
-    public function hasCacheableSupportsMethod(): bool
-    {
-        return true;
     }
 
     public function getSupportedTypes(?string $format): array

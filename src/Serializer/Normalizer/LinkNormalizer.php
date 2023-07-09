@@ -4,10 +4,9 @@ namespace SBSEDV\Bundle\ResponseBundle\Serializer\Normalizer;
 
 use SBSEDV\Bundle\ResponseBundle\Model\Link;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class LinkNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
+class LinkNormalizer implements NormalizerInterface
 {
     public function __construct(
         private readonly UrlGeneratorInterface $urlGenerator
@@ -31,11 +30,6 @@ class LinkNormalizer implements NormalizerInterface, CacheableSupportsMethodInte
     public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof Link;
-    }
-
-    public function hasCacheableSupportsMethod(): bool
-    {
-        return true;
     }
 
     public function getSupportedTypes(?string $format): array

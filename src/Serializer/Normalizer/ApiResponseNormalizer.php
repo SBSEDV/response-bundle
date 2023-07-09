@@ -4,14 +4,13 @@ namespace SBSEDV\Bundle\ResponseBundle\Serializer\Normalizer;
 
 use SBSEDV\Bundle\ResponseBundle\Response\ApiResponseDto;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Contracts\Translation\TranslatableInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class ApiResponseNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface, NormalizerAwareInterface
+class ApiResponseNormalizer implements NormalizerInterface, NormalizerAwareInterface
 {
     use NormalizerAwareTrait;
 
@@ -49,10 +48,5 @@ class ApiResponseNormalizer implements NormalizerInterface, CacheableSupportsMet
         return [
             ApiResponseDto::class => __CLASS__ === static::class,
         ];
-    }
-
-    public function hasCacheableSupportsMethod(): bool
-    {
-        return true;
     }
 }
