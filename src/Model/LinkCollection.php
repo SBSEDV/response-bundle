@@ -4,8 +4,9 @@ namespace SBSEDV\Bundle\ResponseBundle\Model;
 
 /**
  * @implements \IteratorAggregate<string, Link>
+ * @implements \ArrayAccess<string, Link>
  */
-class LinkCollection implements \IteratorAggregate
+class LinkCollection implements \IteratorAggregate, \ArrayAccess
 {
     /**
      * @param array<string, Link> $collection
@@ -38,5 +39,25 @@ class LinkCollection implements \IteratorAggregate
     public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->collection);
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return $this->hasLink($offset);
+    }
+
+    public function offsetGet(mixed $offset): mixed
+    {
+        return $this->collection[$offset] ?? throw new \InvalidArgumentException();
+    }
+
+    public function offsetUnset(mixed $offset): void
+    {
+        $this->removeLink($offset);
+    }
+
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        $this->addLink($offset, $value);
     }
 }
