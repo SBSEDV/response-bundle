@@ -1,6 +1,6 @@
 {
     "name": "sbsedv/response-bundle",
-    "description": "A Symfony ^6.1 bundle that makes HTTP response creation simple.",
+    "description": "A Symfony bundle that makes HTTP response creation simple.",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -15,19 +15,19 @@
         }
     },
     "require": {
-        "php": ">=8.1",
-        "symfony/framework-bundle": "^6.1",
-        "symfony/http-client": "^6.1",
-        "symfony/serializer": "^6.1",
-        "symfony/translation": "^6.1"
+        "php": "^8.2",
+        "symfony/framework-bundle": "^6.1 || ^7.0",
+        "symfony/http-client": "^6.1 || ^7.0",
+        "symfony/serializer": "^6.1 || ^7.0",
+        "symfony/translation": "^6.1 || ^7.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.13",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan": "^1.4",
         "phpstan/phpstan-symfony": "^1.1",
-        "sbsedv/form-bundle": "^1.2",
-        "symfony/validator": "^6.1"
+        "sbsedv/form-bundle": "^1.7",
+        "symfony/validator": "^6.1 || ^7.0"
     },
     "extra": {
         "branch-alias": {
