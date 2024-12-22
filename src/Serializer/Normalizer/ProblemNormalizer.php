@@ -26,7 +26,7 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
     /**
      * @param FlattenException $object
      */
-    public function normalize(mixed $object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         /** @var bool $debug */
         $debug = $context['debug'];
@@ -65,7 +65,7 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
         return $this->normalizer->normalize($response, $format, $context);
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof FlattenException && (!($context['exception'] ?? null) instanceof HttpException);
     }

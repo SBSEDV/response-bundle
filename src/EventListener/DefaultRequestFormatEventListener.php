@@ -9,7 +9,7 @@ class DefaultRequestFormatEventListener implements EventSubscriberInterface
 {
     public function __construct(
         private readonly bool $isDebug,
-        private readonly string $defaultFormat
+        private readonly string $defaultFormat,
     ) {
     }
 

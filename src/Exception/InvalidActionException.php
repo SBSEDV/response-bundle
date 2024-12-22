@@ -10,12 +10,12 @@ class InvalidActionException extends HttpException
     public function __construct(
         TranslatableInterface|string $message,
         int $code = 400,
-        \Throwable $previous = null,
-        string $cause = null,
+        ?\Throwable $previous = null,
+        ?string $cause = null,
         array $headers = [],
         array $other = [],
         bool $isLoggable = false,
-        string $logLevel = LogLevel::INFO
+        string $logLevel = LogLevel::INFO,
     ) {
         parent::__construct($message, $code, $previous, 'invalid_action', $cause, $headers, $other, $isLoggable, $logLevel);
     }

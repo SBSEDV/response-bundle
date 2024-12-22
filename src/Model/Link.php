@@ -11,7 +11,7 @@ class Link
     public function __construct(
         public readonly string $href,
         public readonly array $routeParams = [],
-        public readonly array $other = []
+        public readonly array $other = [],
     ) {
     }
 }

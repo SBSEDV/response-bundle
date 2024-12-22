@@ -16,7 +16,7 @@ class ApiResponseErrorDto
         public readonly TranslatableInterface|string $message,
         public readonly string $type,
         public ?string $cause = null,
-        public array $other = []
+        public array $other = [],
     ) {
     }
 }

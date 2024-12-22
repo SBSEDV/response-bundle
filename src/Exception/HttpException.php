@@ -26,13 +26,13 @@ class HttpException extends \Exception implements HttpExceptionInterface
     public function __construct(
         TranslatableInterface|string $message,
         int $code = 500,
-        \Throwable $previous = null,
-        string $type = null,
+        ?\Throwable $previous = null,
+        ?string $type = null,
         protected ?string $cause = null,
         protected array $headers = [],
         protected array $other = [],
         protected bool $isLoggable = false,
-        protected string $logLevel = LogLevel::ERROR
+        protected string $logLevel = LogLevel::ERROR,
     ) {
         $this->type = $type ?? 'server_error';
 

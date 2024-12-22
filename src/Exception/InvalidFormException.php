@@ -12,7 +12,7 @@ class InvalidFormException extends \Exception
 {
     public function __construct(
         private FormInterface $form,
-        \Throwable $previous = null
+        ?\Throwable $previous = null,
     ) {
         if (!\class_exists(SBSEDVFormBundle::class)) {
             throw new \LogicException(\sprintf('Can not use %s when the sbsedv/form-bundle is not installed.', self::class));

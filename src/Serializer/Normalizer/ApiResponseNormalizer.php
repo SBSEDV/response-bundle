@@ -15,14 +15,14 @@ class ApiResponseNormalizer implements NormalizerInterface, NormalizerAwareInter
     use NormalizerAwareTrait;
 
     public function __construct(
-        private readonly TranslatorInterface $translator
+        private readonly TranslatorInterface $translator,
     ) {
     }
 
     /**
      * @param ApiResponseDto $object
      */
-    public function normalize(mixed $object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         $msg = $object->message ?? Response::$statusTexts[$object->status];
 
@@ -38,7 +38,7 @@ class ApiResponseNormalizer implements NormalizerInterface, NormalizerAwareInter
         ];
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof ApiResponseDto;
     }

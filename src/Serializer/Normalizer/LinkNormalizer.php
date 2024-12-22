@@ -9,14 +9,14 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class LinkNormalizer implements NormalizerInterface
 {
     public function __construct(
-        private readonly UrlGeneratorInterface $urlGenerator
+        private readonly UrlGeneratorInterface $urlGenerator,
     ) {
     }
 
     /**
      * @param Link $object
      */
-    public function normalize(mixed $object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         $href = $object->href;
 
@@ -27,7 +27,7 @@ class LinkNormalizer implements NormalizerInterface
         return [...$object->other, 'href' => $href];
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof Link;
     }

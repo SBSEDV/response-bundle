@@ -13,9 +13,9 @@ class BundledHttpException extends HttpException
         private array $exceptions,
         TranslatableInterface|string $message = '',
         int $code = 400,
-        \Throwable $previous = null,
+        ?\Throwable $previous = null,
         array $headers = [],
-        array $other = []
+        array $other = [],
     ) {
         foreach ($this->exceptions as $exception) {
             $headers = \array_merge($headers, $exception->getHeaders());

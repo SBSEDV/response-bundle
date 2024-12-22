@@ -16,7 +16,7 @@ class InvalidFormExceptionEventListener implements EventSubscriberInterface
 {
     public function __construct(
         private readonly NormalizerInterface $normalizer,
-        private readonly ApiResponseFactory $apiResponseFactory
+        private readonly ApiResponseFactory $apiResponseFactory,
     ) {
     }
 

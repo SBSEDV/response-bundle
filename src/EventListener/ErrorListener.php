@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\EventListener\ErrorListener as SymfonyErrorList
 
 class ErrorListener extends SymfonyErrorListener
 {
-    protected function logException(\Throwable $exception, string $message, string $logLevel = null): void
+    protected function logException(\Throwable $exception, string $message, ?string $logLevel = null): void
     {
         if ($exception instanceof BundledHttpException) {
             foreach ($exception->getExceptions() as $e) {

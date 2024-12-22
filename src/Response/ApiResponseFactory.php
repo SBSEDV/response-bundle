@@ -14,7 +14,7 @@ class ApiResponseFactory
     public function __construct(
         private readonly SerializerInterface $serializer,
         private readonly NormalizerInterface $normalizer,
-        private readonly RequestStack $requestStack
+        private readonly RequestStack $requestStack,
     ) {
     }
 
@@ -33,7 +33,7 @@ class ApiResponseFactory
 
         $format = match ($request?->getPreferredFormat('json')) {
             'xml' => 'xml',
-            default => 'json'
+            default => 'json',
         };
 
         $normalized = $this->normalizer->normalize($apiResponseDto, $format, $context);

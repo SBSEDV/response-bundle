@@ -12,14 +12,14 @@ class ApiResponseErrorNormalizer implements NormalizerInterface
 {
     public function __construct(
         private readonly TranslatorInterface $translator,
-        private readonly ?NameConverterInterface $nameConverter
+        private readonly ?NameConverterInterface $nameConverter,
     ) {
     }
 
     /**
      * @param ApiResponseErrorDto $object
      */
-    public function normalize(mixed $object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         $msg = $object->message;
 
@@ -43,7 +43,7 @@ class ApiResponseErrorNormalizer implements NormalizerInterface
         return $error;
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof ApiResponseErrorDto;
     }

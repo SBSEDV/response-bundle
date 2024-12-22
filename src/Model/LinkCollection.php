@@ -12,7 +12,7 @@ class LinkCollection implements \IteratorAggregate, \ArrayAccess
      * @param array<string, Link> $collection
      */
     public function __construct(
-        private array $collection = []
+        private array $collection = [],
     ) {
         foreach ($this->collection as $key => $value) {
             $this->addLink($key, $value);
@@ -58,6 +58,10 @@ class LinkCollection implements \IteratorAggregate, \ArrayAccess
 
     public function offsetSet(mixed $offset, mixed $value): void
     {
+        if (!\is_string($offset)) {
+            throw new \InvalidArgumentException('Offset must be a string');
+        }
+
         $this->addLink($offset, $value);
     }
 }

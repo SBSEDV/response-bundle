@@ -17,7 +17,7 @@ class ApiResponseDto
         public readonly TranslatableInterface|string|null $message = null,
         public readonly mixed $data = null,
         public readonly array $errors = [],
-        public readonly int $status = Response::HTTP_OK
+        public readonly int $status = Response::HTTP_OK,
     ) {
     }
 }
