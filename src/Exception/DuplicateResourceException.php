@@ -8,7 +8,9 @@ use Symfony\Contracts\Translation\TranslatableInterface;
 class DuplicateResourceException extends HttpException
 {
     /**
-     * @param mixed $resourceIdentifier The duplicate resource identifier.
+     * @param scalar|\Stringable|null        $resourceIdentifier The duplicate resource identifier.
+     * @param array<string, string|string[]> $headers
+     * @param array<array-key, mixed>        $other
      */
     public function __construct(
         TranslatableInterface|string $message,
@@ -24,6 +26,7 @@ class DuplicateResourceException extends HttpException
             $resourceIdentifier = (string) $resourceIdentifier;
         }
 
+        // @phpstan-ignore-next-line function.alreadyNarrowedType
         if (null !== $resourceIdentifier && !\is_scalar($resourceIdentifier)) {
             throw new \InvalidArgumentException('The $resourceIdentifier must have a scalar value.');
         }

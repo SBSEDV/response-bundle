@@ -24,7 +24,10 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
     }
 
     /**
-     * @param FlattenException $object
+     * @param FlattenException        $object
+     * @param array<array-key, mixed> $context
+     *
+     * @return array<string, mixed>
      */
     public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
@@ -61,10 +64,13 @@ class ProblemNormalizer implements NormalizerInterface, NormalizerAwareInterface
 
         $response = new ApiResponseDto($msg, null, [$error], $object->getStatusCode());
 
-        // @phpstan-ignore-next-line
+        // @phpstan-ignore-next-line return.type
         return $this->normalizer->normalize($response, $format, $context);
     }
 
+    /**
+     * @param array<array-key, mixed> $context
+     */
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof FlattenException && (!($context['exception'] ?? null) instanceof HttpException);

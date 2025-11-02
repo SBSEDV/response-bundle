@@ -12,7 +12,10 @@ class LinkCollectionNormalizer implements NormalizerInterface, NormalizerAwareIn
     use NormalizerAwareTrait;
 
     /**
-     * @param LinkCollection $object
+     * @param LinkCollection          $object
+     * @param array<array-key, mixed> $context
+     *
+     * @return array<string, mixed>
      */
     public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
@@ -25,6 +28,9 @@ class LinkCollectionNormalizer implements NormalizerInterface, NormalizerAwareIn
         return $data;
     }
 
+    /**
+     * @param array<array-key, mixed> $context
+     */
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof LinkCollection;

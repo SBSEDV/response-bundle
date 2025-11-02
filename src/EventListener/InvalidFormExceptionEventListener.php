@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 class InvalidFormExceptionEventListener implements EventSubscriberInterface
 {
@@ -43,7 +44,7 @@ class InvalidFormExceptionEventListener implements EventSubscriberInterface
 
         $errors = [];
 
-        /** @var array $formError */
+        /** @var array{'message': string|TranslatableInterface, 'cause'?: string, 'type'?: string, 'cause'?: string} $formError */
         foreach ($formErrors as $formError) {
             $dto = new ApiResponseErrorDto($formError['message'], 'invalid_request_error', $formError['cause'] ?? null);
 
