@@ -1,10 +1,11 @@
 parameters:
     level: 9
 
+    paths:
+        - src/
+        - config/
+
     reportUnmatchedIgnoredErrors: false
 
     ignoreErrors:
         - identifier: missingType.iterableValue
-
-    paths:
-        - src
