@@ -7,6 +7,10 @@ use Symfony\Contracts\Translation\TranslatableInterface;
 
 class AccessDeniedException extends HttpException
 {
+    /**
+     * @param array<string, string|string[]> $headers
+     * @param array<array-key, mixed>        $other
+     */
     public function __construct(
         TranslatableInterface|string $message = 'Access denied.',
         ?\Throwable $previous = null,
