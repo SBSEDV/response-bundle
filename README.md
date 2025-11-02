@@ -1,5 +1,5 @@
-[![PHPStan](https://github.com/SBSEDV/response-bundle/actions/workflows/phpstan.yml/badge.svg)](https://github.com/SBSEDV/response-bundle/actions/workflows/phpstan.yml)
-[![PHPCS-Fixer](https://github.com/SBSEDV/response-bundle/actions/workflows/phpcsfixer.yaml/badge.svg)](https://github.com/SBSEDV/response-bundle/actions/workflows/phpcsfixer.yaml)
+[![PHPStan](https://github.com/SBSEDV/response-bundle/actions/workflows/phpstan.yaml/badge.svg)](https://github.com/SBSEDV/response-bundle/actions/workflows/phpstan.yaml)
+[![PHPCSFixer](https://github.com/SBSEDV/response-bundle/actions/workflows/phpcsfixer.yaml/badge.svg)](https://github.com/SBSEDV/response-bundle/actions/workflows/phpcsfixer.yaml)
 
 # sbsedv/response-bundle
 
