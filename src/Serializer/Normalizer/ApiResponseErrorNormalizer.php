@@ -17,10 +17,7 @@ class ApiResponseErrorNormalizer implements NormalizerInterface
     }
 
     /**
-     * @param ApiResponseErrorDto     $object
-     * @param array<array-key, mixed> $context
-     *
-     * @return array<string, mixed>
+     * @param ApiResponseErrorDto $object
      */
     public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
@@ -46,9 +43,6 @@ class ApiResponseErrorNormalizer implements NormalizerInterface
         return $error;
     }
 
-    /**
-     * @param array<array-key, mixed> $context
-     */
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof ApiResponseErrorDto;

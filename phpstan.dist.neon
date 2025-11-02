@@ -4,3 +4,7 @@ parameters:
     paths:
         - src/
         - config/
+
+    ignoreErrors:
+        - message: '#generic interface Symfony\\Component\\Form\\FormInterface but does not specify its types: TData#'
+        - message: '#generic interface Symfony\\Component\\Form\\FormInterface does not specify its types: TData#'

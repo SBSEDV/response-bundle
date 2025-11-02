@@ -14,10 +14,7 @@ class LinkNormalizer implements NormalizerInterface
     }
 
     /**
-     * @param Link                    $object
-     * @param array<array-key, mixed> $context
-     *
-     * @return array<string, mixed>
+     * @param Link $object
      */
     public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
@@ -30,9 +27,6 @@ class LinkNormalizer implements NormalizerInterface
         return [...$object->other, 'href' => $href];
     }
 
-    /**
-     * @param array<array-key, mixed> $context
-     */
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof Link;
