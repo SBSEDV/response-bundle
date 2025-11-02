@@ -5,7 +5,5 @@ parameters:
         - src/
         - config/
 
-    reportUnmatchedIgnoredErrors: false
-
     ignoreErrors:
         - identifier: missingType.iterableValue
