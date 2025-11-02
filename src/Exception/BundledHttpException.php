@@ -7,7 +7,9 @@ use Symfony\Contracts\Translation\TranslatableInterface;
 class BundledHttpException extends HttpException
 {
     /**
-     * @param HttpException[] $exceptions The exceptions to bundle.
+     * @param HttpException[]                $exceptions The exceptions to bundle.
+     * @param array<string, string|string[]> $headers
+     * @param array<array-key, mixed>        $other
      */
     public function __construct(
         private array $exceptions,
