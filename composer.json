@@ -23,9 +23,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.89",
-        "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan": "^1.4",
-        "phpstan/phpstan-symfony": "^1.1",
         "sbsedv/form-bundle": "^1.7",
         "symfony/validator": "^7.0"
     },
@@ -35,9 +33,6 @@
         }
     },
     "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "phpstan/extension-installer": true
-        }
+        "sort-packages": true
     }
 }
