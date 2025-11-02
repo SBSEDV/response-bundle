@@ -21,9 +21,9 @@ class ApiResponseFactory
     /**
      * Create an API response.
      *
-     * @param ApiResponseDto $apiResponseDto The ApiResponse DTO object.
-     * @param array          $headers        [optional] An array of headers that will be added to the response.
-     * @param array          $context        [optional] The serialization context.
+     * @param ApiResponseDto                 $apiResponseDto The ApiResponse DTO object.
+     * @param array<string, string|string[]> $headers        [optional] An array of headers that will be added to the response.
+     * @param array<array-key, mixed>        $context        [optional] The serialization context.
      */
     public function createApiResponse(ApiResponseDto $apiResponseDto, array $headers = [], array $context = []): Response
     {
