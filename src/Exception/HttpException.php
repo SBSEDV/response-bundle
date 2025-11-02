@@ -14,14 +14,14 @@ class HttpException extends \Exception implements HttpExceptionInterface
     protected ?TranslatableInterface $translatable = null;
 
     /**
-     * @param TranslatableInterface|string $message    The Exception message to throw.
-     * @param int                          $code       [optional] The Exception code.
-     * @param \Throwable|null              $previous   [optional] The previous throwable used for the exception chaining.
-     * @param string|null                  $cause      [optional] The error cause.
-     * @param array                        $headers    [optional] Additional http response headers.
-     * @param array                        $other      [optional] Additional error parameters.
-     * @param bool                         $isLoggable [optional] Whether the exception should be logged.
-     * @param string                       $logLevel   [optional] The desired log level.
+     * @param TranslatableInterface|string   $message    The Exception message to throw.
+     * @param int                            $code       [optional] The Exception code.
+     * @param \Throwable|null                $previous   [optional] The previous throwable used for the exception chaining.
+     * @param string|null                    $cause      [optional] The error cause.
+     * @param array<string, string|string[]> $headers    [optional] Additional http response headers.
+     * @param array<array-key, mixed>        $other      [optional] Additional error parameters.
+     * @param bool                           $isLoggable [optional] Whether the exception should be logged.
+     * @param string                         $logLevel   [optional] The desired log level.
      */
     public function __construct(
         TranslatableInterface|string $message,
@@ -80,7 +80,9 @@ class HttpException extends \Exception implements HttpExceptionInterface
     }
 
     /**
-     * Get the extra data.
+     * The extra data.
+     *
+     * @return array<array-key, mixed>
      */
     public function getOther(): array
     {
@@ -92,6 +94,9 @@ class HttpException extends \Exception implements HttpExceptionInterface
         return $this->code;
     }
 
+    /**
+     * @return array<string, string|string[]>
+     */
     public function getHeaders(): array
     {
         return $this->headers;
