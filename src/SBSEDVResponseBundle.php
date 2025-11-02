@@ -17,6 +17,7 @@ class SBSEDVResponseBundle extends AbstractBundle
         $definition->import('../config/definitions/*.php');
     }
 
+    // @phpstan-ignore-next-line missingType.iterableValue
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         if ($config['exception_normalizer'] === true) {
