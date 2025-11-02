@@ -16,10 +16,10 @@
     },
     "require": {
         "php": "^8.2",
-        "symfony/framework-bundle": "^6.1 || ^7.0",
-        "symfony/http-client": "^6.1 || ^7.0",
-        "symfony/serializer": "^6.1 || ^7.0",
-        "symfony/translation": "^6.1 || ^7.0"
+        "symfony/framework-bundle": "^7.0",
+        "symfony/http-client": "^7.0",
+        "symfony/serializer": "^7.0",
+        "symfony/translation": "^7.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.13",
@@ -27,7 +27,7 @@
         "phpstan/phpstan": "^1.4",
         "phpstan/phpstan-symfony": "^1.1",
         "sbsedv/form-bundle": "^1.7",
-        "symfony/validator": "^6.1 || ^7.0"
+        "symfony/validator": "^7.0"
     },
     "extra": {
         "branch-alias": {
