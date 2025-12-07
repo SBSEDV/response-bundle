@@ -3,4 +3,4 @@
 
 # sbsedv/response-bundle
 
-A [Symfony ^7.0](https://symfony.com/) bundle that makes HTTP response creation simple.
+A [Symfony](https://symfony.com/) bundle that makes HTTP response creation simple.
